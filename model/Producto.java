@@ -3,11 +3,12 @@ package model;
 //Clase producto
 
 public class Producto implements Comparable<Producto>{
-    
-    private String codigoProducto;
+    //Relizar comparables con lo comentado
+    private String codigoProducto; //a-z
     private String descripcion;
-    private double precio;
-    private int stock;
+    private double precio; //de barato a caro
+    private int stock; // de menor a mayor
+    //Hacerlo en el controlador usando clases anonimas pero al reves
     
     private static final String CSV_FORMATO = "Clase;Código Producto;Descripción;Precio;Stock;Caducidad";
 

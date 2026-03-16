@@ -86,8 +86,8 @@ public class Main
         System.out.println("- 6. Mostrar productos caducados                       -");
         System.out.println("- 7. Mostrar productos entre dos precios               -");
         System.out.println("- 8. Mostrar productos retirados                       -");
-        System.out.println("-                                                      -");
-        System.out.println("-                                                      -");
+        System.out.println("- 9. Mostrar productos de forma ascendente             -");
+        System.out.println("- 10. Mostrar productos de forma descendiente          -");
         System.out.println("--------------------------------------------------------");
     }
     
@@ -120,11 +120,33 @@ public class Main
             case 8:
                 listarProductosRe(sc);
                 break;
-
+            case 9:
+                listarProductosAsc(sc);
+                break;
+            case 10:
+                listarProductosDsc(sc);
+                break;
         }
     }
     
     //Crud producto
+    
+    public static void listarProductosAsc (Scanner sc){
+        print("1) Para listar por Codigo: ");
+        print("2) Para listar por Precio: ");
+        print("3) Para listar por Stock: ");
+        int opcion = sc.nextInt();
+        imprimirDatos(Controlador.getSingleton().listarProductoComAsc(opcion));
+    }    
+    
+    public static void listarProductosDsc (Scanner sc){
+        print("1) Para listar por Codigo: ");
+        print("2) Para listar por Precio: ");
+        print("3) Para listar por Stock: ");
+        int opcion = sc.nextInt();
+        imprimirDatos(Controlador.getSingleton().listarProductoComDes(opcion));
+    }
+    
     public static void listarProductoSpire(Scanner sc){
         print("Introduce una fecha | formato (YYYYMMDD): ");
         String fecha = sc.nextLine();

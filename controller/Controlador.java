@@ -40,6 +40,89 @@ public class Controlador
     }
     
     //Crud Productos
+    
+    //Listar por Comparable Ascendente
+    public String listarProductoComAsc(int opcion){
+        String resultado="";
+        List<Producto> misProductos = new ArrayList<Producto>();
+        
+        for (Producto p: misProductosA){
+            misProductos.add(p);
+        }
+        
+        for (Producto p: misProductosR){
+            misProductos.add(p);
+        }
+        
+        //Segun opcion
+        switch (opcion){
+            case 1:
+                Collections.sort(misProductos, new CoProductoxCodigo());
+                break;
+            case 2:
+                Collections.sort(misProductos, new CoProductoxPrecio());
+                break;
+            case 3:
+                Collections.sort(misProductos, new CoProductoxStock());                
+                break;
+        }
+        
+        
+        for (Producto p: misProductos){
+            resultado += p.toString() + "\n";
+        }
+        
+        return Producto.getCsvFormato() + "\n" + resultado;
+    }
+    //Listar por Comparable Descendente
+    public String listarProductoComDes(int opcion){
+        String resultado="";
+        List<Producto> misProductos = new ArrayList<Producto>();
+        
+        for (Producto p: misProductosA){
+            misProductos.add(p);
+        }
+        
+        for (Producto p: misProductosR){
+            misProductos.add(p);
+        }
+        
+        //Segun opcion
+        switch (opcion){
+            case 1:
+                Collections.sort(misProductos, new CoProductoxCodigo(){
+                    @Override
+                    public int compare(Producto p1, Producto p2){
+                        return p2.getCodigoProducto().compareTo(p1.getCodigoProducto());
+                    }
+                });
+                break;
+            case 2:
+                Collections.sort(misProductos, new CoProductoxPrecio(){
+                    @Override
+                    public int compare(Producto p1,Producto p2){
+                        return (int)(p2.getPrecio()-p1.getPrecio());
+                    }
+                });
+                break;
+            case 3:
+                Collections.sort(misProductos, new CoProductoxStock(){
+                    @Override
+                    public int compare(Producto p1,Producto p2){
+                        return (p1.getStock()-p2.getStock());
+                    }
+                });                
+                break;
+        }
+        
+        
+        for (Producto p: misProductos){
+            resultado += p.toString() + "\n";
+        }
+        
+        return Producto.getCsvFormato() + "\n" + resultado;
+    }
+    
     public String listarProductoSpire(String fecha){
         String resultado="";
         List<Producto> misProductos = new ArrayList<Producto>();
